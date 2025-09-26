@@ -1,0 +1,1310 @@
+{
+  "metadata": {
+    "total_cases": 120,
+    "version": "1.0.0",
+    "created_date": "2024-01-15",
+    "description": "Comprehensive test dataset for drink intent classification",
+    "intent_distribution": {
+      "grab_drink": 40,
+      "recommend_drink": 30,
+      "deliver_drink": 20,
+      "cancel_order": 15,
+      "query_status": 10,
+      "modify_order": 5
+    },
+    "category_distribution": {
+      "happy_path": 60,
+      "edge_cases": 30,
+      "negative_tests": 20,
+      "performance_tests": 10
+    },
+    "language_distribution": {
+      "chinese": 70,
+      "english": 40,
+      "mixed": 10
+    }
+  },
+  "test_cases": [
+    {
+      "id": "TC001",
+      "input": "给我来一杯拿铁",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "拿铁"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC002",
+      "input": "来杯大杯冰美式",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "美式",
+        "size": "大杯",
+        "temperature": "冰"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC003",
+      "input": "要两瓶可口可乐",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "可乐",
+        "brand": "可口可乐",
+        "quantity": 2
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC004",
+      "input": "Give me a large iced coffee",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee",
+        "size": "large",
+        "temperature": "iced"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC005",
+      "input": "I want two bottles of Sprite",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "Sprite",
+        "quantity": 2
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC006",
+      "input": "我要一杯热茶",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "茶",
+        "temperature": "热"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC007",
+      "input": "来个小杯奶茶",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "奶茶",
+        "size": "小杯"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC008",
+      "input": "Get me a hot chocolate",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "chocolate",
+        "temperature": "hot"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC009",
+      "input": "三杯橙汁",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "橙汁",
+        "quantity": 3
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC010",
+      "input": "A medium cappuccino please",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "cappuccino",
+        "size": "medium"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC011",
+      "input": "把这杯咖啡送到会议室",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "咖啡",
+        "location": "会议室"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC012",
+      "input": "麻烦把热茶送到办公室",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "茶",
+        "temperature": "热",
+        "location": "办公室"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC013",
+      "input": "Please deliver the coffee to room 301",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "coffee",
+        "location": "room 301"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC014",
+      "input": "送一杯拿铁到前台",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "拿铁",
+        "location": "前台"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC015",
+      "input": "Take this juice to the reception",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "juice",
+        "location": "reception"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC016",
+      "input": "推荐点提神的饮料",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "提神"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC017",
+      "input": "有什么清爽的饮品吗",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "清爽"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC018",
+      "input": "What refreshing drinks do you have?",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "refreshing"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC019",
+      "input": "建议个解腻的茶类",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "解腻",
+        "drink_name": "茶"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC020",
+      "input": "Recommend something energizing",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "energizing"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC021",
+      "input": "算了，不要了",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC022",
+      "input": "取消刚才的咖啡订单",
+      "expected_intent": "cancel_order",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC023",
+      "input": "Cancel my order",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC024",
+      "input": "我的饮料好了吗",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC025",
+      "input": "Is my latte ready?",
+      "expected_intent": "query_status",
+      "expected_entities": {
+        "drink_name": "latte"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC026",
+      "input": "改成大杯的",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "size": "大杯"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC027",
+      "input": "Change it to hot",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "temperature": "hot"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC028",
+      "input": "我想喝点什么暖胃的",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "暖胃"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC029",
+      "input": "给我来个大的那种咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡",
+        "size": "大"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC030",
+      "input": "Um, can I get a coffee?",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC031",
+      "input": "咖啡咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC032",
+      "input": "coffe please",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC033",
+      "input": "我要一个大big杯的coffee",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee",
+        "size": "大"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "mixed"
+    },
+    {
+      "id": "TC034",
+      "input": "给我recommend点drink",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "mixed"
+    },
+    {
+      "id": "TC035",
+      "input": "今天天气不错",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.7",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC036",
+      "input": "How is the weather today?",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.7",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC037",
+      "input": "",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.5",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC038",
+      "input": "12345",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.5",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC039",
+      "input": "我要买一台电脑",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.7",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC040",
+      "input": "I need to buy a laptop",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.7",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC041",
+      "input": "今天我想要一杯热腾腾的香浓美味的意式浓缩咖啡配上丰富的奶泡和完美的拉花艺术",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡",
+        "temperature": "热"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC042",
+      "input": "I would like to order a very large extra hot double shot espresso with oat milk and two sugars please thank you",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "espresso",
+        "temperature": "hot",
+        "size": "large"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC043",
+      "input": "可以给我来一杯拿铁吗？谢谢！",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "拿铁"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC044",
+      "input": "Could I have a cappuccino, please?",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "cappuccino"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC045",
+      "input": "我想要一大杯冰镇柠檬水",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "柠檬水",
+        "size": "大杯",
+        "temperature": "冰"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC046",
+      "input": "One medium hot green tea",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "green tea",
+        "size": "medium",
+        "temperature": "hot",
+        "quantity": 1
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC047",
+      "input": "帮我拿五瓶矿泉水",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "矿泉水",
+        "quantity": 5
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC048",
+      "input": "Three bottles of sparkling water",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "sparkling water",
+        "quantity": 3
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC049",
+      "input": "星巴克大杯摩卡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "摩卡",
+        "brand": "星巴克",
+        "size": "大杯"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC050",
+      "input": "A Starbucks venti americano",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "americano",
+        "brand": "Starbucks",
+        "size": "venti"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC051",
+      "input": "请把这杯果汁送到2楼办公室",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "果汁",
+        "location": "2楼办公室"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC052",
+      "input": "Deliver this smoothie to the cafeteria",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "smoothie",
+        "location": "cafeteria"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC053",
+      "input": "把冰咖啡送到会议室A",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "咖啡",
+        "temperature": "冰",
+        "location": "会议室A"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC054",
+      "input": "Please take the hot chocolate to room B12",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "hot chocolate",
+        "location": "room B12"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC055",
+      "input": "送两杯茶到休息室",
+      "expected_intent": "deliver_drink",
+      "expected_entities": {
+        "drink_name": "茶",
+        "quantity": 2,
+        "location": "休息室"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC056",
+      "input": "有什么好喝的推荐吗",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC057",
+      "input": "What do you recommend for breakfast?",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC058",
+      "input": "推荐个适合下午的饮品",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC059",
+      "input": "Something light and healthy please",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "light"
+      },
+      "expected_confidence": ">0.7",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC060",
+      "input": "我想要点温和的茶类",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "drink_name": "茶",
+        "preference": "温和"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC061",
+      "input": "不要这个订单了",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC062",
+      "input": "Never mind, cancel that",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC063",
+      "input": "取消我的奶茶",
+      "expected_intent": "cancel_order",
+      "expected_entities": {
+        "drink_name": "奶茶"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC064",
+      "input": "Cancel the cappuccino order",
+      "expected_intent": "cancel_order",
+      "expected_entities": {
+        "drink_name": "cappuccino"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC065",
+      "input": "我不想要了",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC066",
+      "input": "咖啡做好了没有",
+      "expected_intent": "query_status",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC067",
+      "input": "How long for my tea?",
+      "expected_intent": "query_status",
+      "expected_entities": {
+        "drink_name": "tea"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC068",
+      "input": "我的订单怎么样了",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC069",
+      "input": "What's the status of my drink?",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC070",
+      "input": "还要等多久",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC071",
+      "input": "换成中杯的",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "size": "中杯"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC072",
+      "input": "Make it iced instead",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "temperature": "iced"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC073",
+      "input": "改成热的奶茶吧",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "temperature": "热",
+        "drink_name": "奶茶"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC074",
+      "input": "Change to decaf coffee",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "drink_name": "decaf coffee"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "en"
+    },
+    {
+      "id": "TC075",
+      "input": "我要改成小杯",
+      "expected_intent": "modify_order",
+      "expected_entities": {
+        "size": "小杯"
+      },
+      "expected_confidence": ">0.8",
+      "category": "happy_path",
+      "language": "zh"
+    },
+    {
+      "id": "TC076",
+      "input": "嗯...我想要个...那个...咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC077",
+      "input": "Uh... can I get... um... a latte?",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "latte"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC078",
+      "input": "我想喝那个什么来着...就是咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC079",
+      "input": "What was that drink called... oh, mocha",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "mocha"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC080",
+      "input": "太渴了，要水",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "水"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC081",
+      "input": "So thirsty, need water",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "water"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC082",
+      "input": "有点累，来点提神的",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "提神"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC083",
+      "input": "Feeling tired, something to wake me up",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {
+        "preference": "energizing"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC084",
+      "input": "热死了，要冰的",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "temperature": "冰"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC085",
+      "input": "It's so hot, need something cold",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "temperature": "cold"
+      },
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC086",
+      "input": "这个不对，要那个",
+      "expected_intent": "modify_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.5",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC087",
+      "input": "This is wrong, I want that one",
+      "expected_intent": "modify_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.5",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC088",
+      "input": "急死了，好了没有",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC089",
+      "input": "Taking forever, is it ready yet?",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC090",
+      "input": "算了算了",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC091",
+      "input": "Forget it forget it",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.8",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC092",
+      "input": "我是程序员",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC093",
+      "input": "I am a software engineer",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC094",
+      "input": "今天星期几",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC095",
+      "input": "What day is today",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC096",
+      "input": "北京在哪里",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC097",
+      "input": "Where is New York",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC098",
+      "input": "你好你好你好",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC099",
+      "input": "Hello hello hello",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.6",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC100",
+      "input": "abcdefghijklmnopqrstuvwxyz",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.5",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC101",
+      "input": "！@#￥%……&*（）",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.5",
+      "category": "negative_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC102",
+      "input": "!@#$%^&*()",
+      "expected_intent": "grab_drink",
+      "expected_entities": {},
+      "expected_confidence": "<0.5",
+      "category": "negative_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC103",
+      "input": "我想要一杯非常非常非常非常非常大杯的超级浓郁香醇美味可口的意式浓缩咖啡加上新鲜牛奶制作的奶泡和漂亮的拉花艺术装饰在上面看起来非常美丽动人",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡",
+        "size": "大杯"
+      },
+      "expected_confidence": ">0.6",
+      "category": "performance_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC104",
+      "input": "I would absolutely love to have a tremendously large extremely hot incredibly delicious amazingly aromatic perfectly crafted artisanal espresso coffee with beautiful steamed milk foam art",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "espresso",
+        "temperature": "hot",
+        "size": "large"
+      },
+      "expected_confidence": ">0.6",
+      "category": "performance_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC105",
+      "input": "咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC106",
+      "input": "coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee coffee",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC107",
+      "input": "请问您这里有没有那种特别特别好喝的适合在下午时光慢慢品尝的温度刚好不会太烫也不会太凉的中等大小杯子装的带有淡淡奶香味道的拿铁咖啡",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "拿铁",
+        "size": "中等"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "zh"
+    },
+    {
+      "id": "TC108",
+      "input": "Do you happen to have any of those wonderfully delicious perfectly temperature-balanced medium-sized creamy smooth rich and flavorful latte coffee drinks that are perfect for afternoon enjoyment",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "latte",
+        "size": "medium"
+      },
+      "expected_confidence": ">0.7",
+      "category": "performance_tests",
+      "language": "en"
+    },
+    {
+      "id": "TC109",
+      "input": "A1B2C3D4E5F6G7H8I9J0咖啡K1L2M3N4O5",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.6",
+      "category": "performance_tests",
+      "language": "mixed"
+    },
+    {
+      "id": "TC110",
+      "input": "123ABC456DEF789coffee0GHI1JKL2MNO3",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee"
+      },
+      "expected_confidence": ">0.6",
+      "category": "performance_tests",
+      "language": "mixed"
+    },
+    {
+      "id": "TC111",
+      "input": "我要点什么好呢？嗯...还是来杯咖啡吧",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "咖啡"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC112",
+      "input": "What should I order? Hmm... I'll have a coffee",
+      "expected_intent": "grab_drink",
+      "expected_entities": {
+        "drink_name": "coffee"
+      },
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC113",
+      "input": "我觉得今天心情不错，来点好喝的",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC114",
+      "input": "I'm in a good mood today, something nice",
+      "expected_intent": "recommend_drink",
+      "expected_entities": {},
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC115",
+      "input": "等等，我还是不要了",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC116",
+      "input": "Wait, I changed my mind",
+      "expected_intent": "cancel_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC117",
+      "input": "怎么还没好啊",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC118",
+      "input": "Why is it taking so long",
+      "expected_intent": "query_status",
+      "expected_entities": {},
+      "expected_confidence": ">0.7",
+      "category": "edge_cases",
+      "language": "en"
+    },
+    {
+      "id": "TC119",
+      "input": "我想换个口味",
+      "expected_intent": "modify_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "zh"
+    },
+    {
+      "id": "TC120",
+      "input": "I want to change the flavor",
+      "expected_intent": "modify_order",
+      "expected_entities": {},
+      "expected_confidence": ">0.6",
+      "category": "edge_cases",
+      "language": "en"
+    }
+  ]
+}

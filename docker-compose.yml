@@ -1,0 +1,133 @@
+version: '3.8'
+
+services:
+  drink-intent-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: drink-intent-api
+    ports:
+      - "8080:8080"
+    environment:
+      # API Configuration
+      - DRINK_API_API_VERSION=1.0.0
+      - DRINK_API_HOST=0.0.0.0
+      - DRINK_API_PORT=8080
+      
+      # LLM Service Configuration
+      - DRINK_API_LLM_API_BASE=http://10.109.214.243:8000/v1
+      - DRINK_API_LLM_API_KEY=EMPTY
+      - DRINK_API_MODEL_ID=Qwen3-8B
+      - DRINK_API_LLM_TIMEOUT=30
+      - DRINK_API_LLM_MAX_RETRIES=2
+      
+      # Cache Configuration
+      - DRINK_API_REDIS_URL=redis://redis:6379/0
+      - DRINK_API_CACHE_TTL=3600
+      
+      # Rate Limiting
+      - DRINK_API_RATE_LIMIT=100
+      - DRINK_API_MAX_BATCH_SIZE=50
+      
+      # Logging
+      - DRINK_API_LOG_LEVEL=INFO
+      - DRINK_API_LOG_FORMAT=json
+      
+      # Monitoring
+      - DRINK_API_ENABLE_METRICS=true
+    
+    depends_on:
+      - redis
+    
+    volumes:
+      - ./logs:/app/logs
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+    networks:
+      - drink-intent-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: drink-intent-redis
+    ports:
+      - "6379:6379"
+    
+    command: redis-server --appendonly yes
+    
+    volumes:
+      - redis_data:/data
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    networks:
+      - drink-intent-network
+
+  # Optional: Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: drink-intent-prometheus
+    ports:
+      - "9090:9090"
+    
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    
+    restart: unless-stopped
+    
+    networks:
+      - drink-intent-network
+    
+    profiles:
+      - monitoring
+
+  # Optional: Grafana for metrics visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: drink-intent-grafana
+    ports:
+      - "3000:3000"
+    
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    
+    volumes:
+      - grafana_data:/var/lib/grafana
+    
+    restart: unless-stopped
+    
+    networks:
+      - drink-intent-network
+    
+    profiles:
+      - monitoring
+
+volumes:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  drink-intent-network:
+    driver: bridge
